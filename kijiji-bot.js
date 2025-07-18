@@ -49,12 +49,14 @@ async function checkForNewListings() {
             return;
         }
 
-        for (const ad of ads) {
+        for (let i = 1; i < ads.length; i++) {
+            const ad = ads[i];
             if (ad.id === lastSeenId) break;
 
             const message = `New Kijiji Listing!\n\n${ad.title}\n${ad.url}`;
             await bot.telegram.sendMessage(TELEGRAM_CHAT_ID, message);
         }
+
 
         // After sending messages, update to the real newest (which is the second ad)
         if (ads.length > 1) {
