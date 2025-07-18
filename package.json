@@ -1,0 +1,19 @@
+{
+  "name": "kijiji-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cheerio": "^1.1.0",
+    "dotenv": "^17.0.1",
+    "kijiji-scraper": "^6.3.7",
+    "node-fetch": "^3.3.2",
+    "telegraf": "^4.16.3"
+  }
+}

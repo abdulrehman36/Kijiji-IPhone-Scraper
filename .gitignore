@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Node
+node_modules/
+npm-debug.log
+yarn.lock
+
+# VSCode
+.vscode/
+
+# MacOS
+.DS_Store
