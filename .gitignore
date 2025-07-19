@@ -12,3 +12,10 @@ yarn.lock
 
 # MacOS
 .DS_Store
+
+# Env/Secrets
+.env
+
+# Logs
+*.log
+logs/
