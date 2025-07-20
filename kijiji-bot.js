@@ -21,17 +21,18 @@ async function fetchListings() {
         const title = $(element).text().trim();
         const url = $(element).attr('href');
 
-        // Go up to the outer card and search for price inside it
-        const parent = $(element).closest('[data-testid="listing-card"]');
-        const price = parent.find('[data-testid="listing-price"]').text().trim();
+        const price = $(element).parent().parent().find('[data-testid="listing-price"]').text().trim();
+
+
 
         ads.push({
             id: url.split('/').pop(),
             title,
-            price,
-            url: url.startsWith('http') ? url : 'https://www.kijiji.ca' + url,
+            price, // <-- now we're adding price
+            url: 'https://www.kijiji.ca' + url,
         });
     });
+
 
 
     return ads;
