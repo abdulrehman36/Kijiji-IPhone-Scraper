@@ -21,12 +21,18 @@ async function fetchListings() {
         const title = $(element).text().trim();
         const url = $(element).attr('href');
 
+        // Go up to the outer card and search for price inside it
+        const parent = $(element).closest('[data-testid="listing-card"]');
+        const price = parent.find('[data-testid="listing-price"]').text().trim();
+
         ads.push({
             id: url.split('/').pop(),
             title,
-            url: 'https://www.kijiji.ca' + url,
+            price,
+            url: url.startsWith('http') ? url : 'https://www.kijiji.ca' + url,
         });
     });
+
 
     return ads;
 }
@@ -53,7 +59,8 @@ async function checkForNewListings() {
             const ad = ads[i];
             if (ad.id === lastSeenId) break;
 
-            const message = `New Kijiji Listing!\n\n${ad.title}\n${ad.url}`;
+            const message = `New Kijiji Listing!\n\n${ad.title}\n${ad.price}\n🔗${ad.url}`;
+
             await bot.telegram.sendMessage(TELEGRAM_CHAT_ID, message);
         }
 
