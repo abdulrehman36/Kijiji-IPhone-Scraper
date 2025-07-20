@@ -21,14 +21,9 @@ async function fetchListings() {
         const title = $(element).text().trim();
         const url = $(element).attr('href');
 
-        const price = $(element).parent().parent().find('[data-testid="listing-price"]').text().trim();
-
-
-
         ads.push({
             id: url.split('/').pop(),
             title,
-            price, // <-- now we're adding price
             url: 'https://www.kijiji.ca' + url,
         });
     });
@@ -60,7 +55,7 @@ async function checkForNewListings() {
             const ad = ads[i];
             if (ad.id === lastSeenId) break;
 
-            const message = `New Kijiji Listing!\n\n${ad.title}\n${ad.price}\n🔗${ad.url}`;
+            const message = `New Kijiji Listing!\n\n${ad.title}\n🔗${ad.url}`;
 
             await bot.telegram.sendMessage(TELEGRAM_CHAT_ID, message);
         }
