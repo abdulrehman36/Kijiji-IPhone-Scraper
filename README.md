@@ -59,6 +59,17 @@ Scrapes the newest listings from Kijiji and sends a Telegram notification when a
        ```docker
        docker compose up
        ```
+
+##  Example Telegram Notification
+
+
+Below is an example of what the bot message looks like on Telegram:
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/abdulrehman36/Kijiji-IPhone-Scraper/main/assets/IMG_5914.jpg" alt="Telegram Notification Example" width="350"/>
+</p>
+
+
 ## Tech Stack
 - **Node.js** – Core runtime environment for executing JavaScript on the server.  
 - **Cheerio** – For parsing and extracting data from Kijiji HTML pages.  
