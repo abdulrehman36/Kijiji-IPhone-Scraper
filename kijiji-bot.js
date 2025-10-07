@@ -2,7 +2,7 @@ require('dotenv').config();
 const cheerio = require('cheerio');
 const { Telegraf } = require('telegraf');
 
-// === CONFIG ===
+
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 const SEARCH_URL = `https://www.kijiji.ca/b-cell-phone/saskatoon/${encodeURIComponent(process.env.KEYWORDS)}/k0c${process.env.CATEGORY_ID}l${process.env.LOCATION_ID}?sort=dateDesc`;
@@ -10,7 +10,7 @@ const SEARCH_URL = `https://www.kijiji.ca/b-cell-phone/saskatoon/${encodeURIComp
 const bot = new Telegraf(TELEGRAM_BOT_TOKEN);
 let lastSeenId = null;
 
-// === SCRAPER ===
+
 async function fetchListings() {
     const res = await fetch(SEARCH_URL, { headers: { 'User-Agent': 'Mozilla/5.0' } });
     const html = await res.text();
@@ -70,7 +70,6 @@ async function checkForNewListings() {
         console.error("Error scraping Kijiji:", err.message);
     }
 }
-
 
 
 // === RANDOM INTERVAL ===
