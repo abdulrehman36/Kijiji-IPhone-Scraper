@@ -24,7 +24,7 @@ async function fetchListings() {
         ads.push({
             id: url.split('/').pop(),
             title,
-            url: 'https://www.kijiji.ca' + url,
+            url: url.startsWith('http') ? url : 'https://www.kijiji.ca' + url,
         });
     });
 
